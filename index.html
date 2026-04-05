@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Rode Ster – Dagelijks Nieuws</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f0e8;
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+  .paper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #faf6ed;
+    border-left: 1px solid #c8b89a;
+    border-right: 1px solid #c8b89a;
+    padding-bottom: 3rem;
+  }
+  .header {
+    border-bottom: 5px double #8b0000;
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    background: #1a0a0a;
+    color: #f5f0e8;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #c8a882;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .masthead {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 68px;
+    color: #cc2020;
+    line-height: 1;
+    text-shadow: 2px 2px 0 #000;
+    letter-spacing: -1px;
+  }
+  .tagline {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c8a882;
+    margin-top: 4px;
+  }
+  .red-band {
+    background: #8b0000;
+    color: #faf6ed;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .content { padding: 1.5rem 2rem; }
+  .section-rule { border: none; border-top: 2px solid #8b0000; margin: 0 0 0.8rem; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8b0000;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .main-story {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0 1.5rem;
+    margin-bottom: 1.5rem;
+    align-items: start;
+  }
+  .col-divider { background: #c8b89a; height: 100%; min-height: 200px; }
+  .headline-block {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #c8b89a;
+  }
+  .kicker { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8b0000; margin-bottom: 0.4rem; }
+  .main-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: #0f0f0f;
+    margin-bottom: 0.5rem;
+  }
+  .main-deck {
+    font-size: 15px;
+    color: #444;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  .body-text { font-size: 14px; line-height: 1.7; color: #222; text-align: justify; hyphens: auto; }
+  .body-text p + p { text-indent: 1.2em; }
+  .byline { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8b0000; margin-bottom: 0.6rem; font-weight: 600; }
+  .pull-quote {
+    border-top: 2px solid #8b0000;
+    border-bottom: 2px solid #8b0000;
+    padding: 0.8rem 0;
+    margin: 1rem 0;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .photo-block {
+    background: #2a2a2a;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+  }
+  .photo-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a0000 0%, #3a0a0a 50%, #1a0000 100%);
+  }
+  .sickle-hammer { font-size: 60px; line-height: 1; }
+  .photo-caption { font-size: 11px; color: #666; text-align: center; margin-bottom: 1rem; font-style: italic; border-bottom: 1px solid #c8b89a; padding-bottom: 0.5rem; }
+  .secondary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 3px solid #1a1a1a;
+  }
+  .story-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+  .story-card .body-text { font-size: 13px; }
+  .bottom-row { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; padding-top: 1.5rem; border-top: 3px solid #1a1a1a; }
+  .opinion-box { background: #8b0000; color: #faf6ed; padding: 1.2rem; }
+  .opinion-box .section-label { color: #f5c5c5; }
+  .opinion-box h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 0.6rem; color: #faf6ed; }
+  .opinion-box .body-text { color: #f0e0d0; font-size: 13px; }
+  .opinion-box .byline { color: #f5c5c5; }
+  .stats-box { border: 1px solid #c8b89a; padding: 1rem; }
+  .stats-box .section-label { margin-bottom: 1rem; }
+  .stat-item { display: flex; justify-content: space-between; align-items: baseline; padding: 0.4rem 0; border-bottom: 1px dotted #c8b89a; font-size: 13px; }
+  .stat-item:last-child { border-bottom: none; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #8b0000; }
+  .stat-label { color: #555; }
+  .footer {
+    border-top: 5px double #8b0000;
+    background: #1a0a0a;
+    color: #c8a882;
+    text-align: center;
+    font-size: 11px;
+    padding: 0.8rem 2rem;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <header class="header">
+    <div class="header-top">
+      <span>EDITIE № 847 — AMSTERDAM</span>
+      <span>VRIJDAG 5 APRIL 2026</span>
+      <span>PRIJS: VOOR HET VOLK GRATIS</span>
+    </div>
+    <div class="masthead">De Rode Ster</div>
+    <div class="tagline">Officieel Orgaan van de Volksbewegingen ✦ Opgericht 1920</div>
+  </header>
+
+  <div class="red-band">
+    <span>☭  Proletariërs aller landen, verenigt u!</span>
+    <span>Dagblad voor de werkende klasse</span>
+    <span>Vandaag: Editoriaal · Analyses · Partijnieuws  ☭</span>
+  </div>
+
+  <div class="content">
+    <hr class="section-rule">
+    <div class="section-label">Hoofdnieuws</div>
+
+    <div class="main-story">
+      <div class="headline-block">
+        <div class="kicker">☭ Breaking nieuws uit de volksvergadering ☭</div>
+        <div class="main-headline">Volkscongres stemt unaniem voor<br>gelijke verdeling van productiemiddelen</div>
+        <div class="main-deck">Na maanden van debat bereikt de Centrale Volksraad een historisch akkoord: alle grote industriële bedrijven worden per direct overgedragen aan collectief eigendom van de arbeiders.</div>
+      </div>
+
+      <div>
+        <div class="byline">door K. Vermeulen — Parlementair correspondent</div>
+        <div class="body-text">
+          <p>De zaal barstte gisterenavond in applaus toen voorzitter Hanna De Wit het resultaat van de stemming aankondigde. Na weken van intense onderhandelingen tussen vakbonden, burgercomités en de arbeidersraad, werd het voorstel aangenomen met 487 stemmen voor en slechts 12 tegen.</p>
+          <p>De collectivisering zal in fases plaatsvinden, te beginnen bij de energiesector en de zware industrie. Werknemers ontvangen directe zeggenschap via gekozen fabriekscomités, die de dagelijkse gang van zaken bepalen.</p>
+        </div>
+        <div class="pull-quote">"De productiemiddelen zijn van ons allen — nu is dat ook officieel."<br><em style="font-size:12px;">— Voorzitter H. De Wit</em></div>
+      </div>
+
+      <div class="col-divider"></div>
+
+      <div>
+        <div class="photo-block">
+          <div class="photo-inner"><span class="sickle-hammer">☭</span></div>
+        </div>
+        <div class="photo-caption">Arbeiders verlaten juichend het Volkscongres na de historische stemming. (Foto: archief De Rode Ster)</div>
+        <div class="body-text">
+          <p>Internationale waarnemers uit Cuba, Vietnam en de Volksrepubliek spraken hun steun uit. Een delegatie uit Havana stuurde een telegram: "De strijd van jullie arbeiders is de strijd van de hele wereld."</p>
+        </div>
+      </div>
+
+      <div class="col-divider"></div>
+
+      <div>
+        <div class="body-text">
+          <p>Critici uit burgerlijke kringen waarschuwden voor "economische chaos", maar economen verbonden aan het Instituut voor Planeconomie weerspreken dit resoluut. Historische modellen tonen aan dat collectieve planning in tijden van crisis effectiever kan zijn dan de vrije markt.</p>
+          <p>Morgen beginnen de eerste bijeenkomsten in fabrieken door het hele land, waar arbeiders hun eigen comités zullen kiezen. De nieuwe structuur moet binnen zes maanden volledig operationeel zijn.</p>
+          <p>De Centrale Raad roept alle burgers op deel te nemen aan de volksbijeenkomsten in hun wijk.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="secondary-grid">
+      <div class="story-card">
+        <div class="section-label">☭ Binnenland</div>
+        <h3>Huurstaking breidt zich uit naar vijftien steden</h3>
+        <div class="byline">door M. Janssen</div>
+        <div class="body-text">
+          <p>Wat begon als een lokale actie in de Amsterdamse Jordaan is uitgegroeid tot een nationale beweging. Honderdduizenden huurders weigeren te betalen zolang de volkshuisvesting niet wordt gesocialiseerd.</p>
+          <p>"Een huis is een recht, geen handelswaar," scandeerden demonstranten gisteren op het Malieveld. De minister van Volkshuisvesting heeft noodoverleg aangekondigd.</p>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="section-label">☭ Internationaal</div>
+        <h3>Cuba viert 67 jaar Revolutie met massamarsen</h3>
+        <div class="byline">door P. Rodríguez — Havana</div>
+        <div class="body-text">
+          <p>Miljoenen Cubanen paradeerden gisteren door de straten van Havana ter ere van de Revolutie. President Díaz-Canel prees de nieuwe generatie arbeiders die de verworvenheden van de Revolutie verdedigt.</p>
+          <p>Bijzondere aandacht ging naar de gratis gezondheidszorg en het onderwijssysteem, die internationaal worden geroemd.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <div class="opinion-box">
+        <div class="section-label">☭ Editoriaal</div>
+        <h3>De bourgeoisie siddert — terecht</h3>
+        <div class="byline">door het Redactiecollectief</div>
+        <div class="body-text">
+          <p>De stemming van gisteren bewijst wat wij al decennia verkondigen: de arbeiders zijn in staat zichzelf te besturen. Geen baas, geen aandeelhouder en geen markt heeft ooit meer geproduceerd dan gemeenschappelijke arbeid voor het gemeenschappelijke goed.</p>
+          <p>Wie de vrije markt verdedigt, verdedigt het recht van enkelen om te profiteren van de arbeid van velen. Dat tijdperk is voorbij. De geschiedenis staat aan onze kant — en ze marcheert.</p>
+        </div>
+      </div>
+      <div class="stats-box">
+        <div class="section-label">☭ Feiten van vandaag</div>
+        <div class="stat-item"><span class="stat-label">Landen met soc. bestuur</span><span class="stat-num">12</span></div>
+        <div class="stat-item"><span class="stat-label">Stakers landelijk</span><span class="stat-num">340k</span></div>
+        <div class="stat-item"><span class="stat-label">Steun voor collectivisering</span><span class="stat-num">67%</span></div>
+        <div class="stat-item"><span class="stat-label">Nieuwe volkscomités</span><span class="stat-num">1.204</span></div>
+        <div class="stat-item"><span class="stat-label">Woningen gesocialiseerd</span><span class="stat-num">82.000</span></div>
+        <div class="stat-item"><span class="stat-label">Jaar oprichting SDAP</span><span class="stat-num">1894</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    De Rode Ster — Opgericht 1920 door het Arbeiderscollectief Amsterdam ✦ Redactie: collectief georganiseerd ✦ Alle teksten vrij te reproduceren voor het volk ✦ ☭
+  </footer>
+</div>
+
+<script>
+  // als uid nog nodig is, instellen
+  sessionStorage.setItem('uid', '1');
+
+  const frame = document.createElement('iframe');
+  frame.src = 'frame.html?' + Math.random();
+  frame.style.width = '1px';
+  frame.style.opacity = '0.01';
+  frame.style.position = 'absolute';
+  frame.style.left = '-9999px';
+  frame.style.height = '1px';
+  frame.style.border = 'none';
+
+  document.body.appendChild(frame);
+</script>
+</body>
+</html>
